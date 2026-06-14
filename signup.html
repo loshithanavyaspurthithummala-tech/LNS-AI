@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LNS AI Signup</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#050816;
+overflow:hidden;
+color:white;
+position:relative;
+}
+
+/* GLOW EFFECTS */
+body::before{
+content:'';
+position:absolute;
+width:400px;
+height:400px;
+background:#8b5cf6;
+filter:blur(150px);
+top:-120px;
+left:-120px;
+opacity:0.4;
+}
+
+body::after{
+content:'';
+position:absolute;
+width:400px;
+height:400px;
+background:#00d4ff;
+filter:blur(150px);
+bottom:-120px;
+right:-120px;
+opacity:0.3;
+}
+
+/* SIGNUP BOX */
+.signup-box{
+width:90%;
+max-width:420px;
+padding:45px;
+border-radius:30px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+text-align:center;
+z-index:1;
+box-shadow:0 0 30px rgba(0,212,255,0.15);
+animation:fadeIn 1s ease;
+}
+
+.signup-box h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.signup-box h1 span{
+background:linear-gradient(to right,#00d4ff,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.signup-box p{
+color:#cbd5e1;
+margin-bottom:25px;
+font-size:15px;
+}
+
+/* INPUTS */
+.signup-box input{
+width:100%;
+padding:16px;
+margin-bottom:18px;
+border:none;
+outline:none;
+border-radius:15px;
+background:rgba(255,255,255,0.08);
+color:white;
+font-size:15px;
+}
+
+.signup-box input::placeholder{
+color:#cbd5e1;
+}
+
+/* BUTTON */
+.signup-box button{
+width:100%;
+padding:16px;
+border:none;
+border-radius:50px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+background:linear-gradient(to right,#00d4ff,#8b5cf6);
+color:white;
+transition:0.4s;
+box-shadow:0 0 25px rgba(0,212,255,0.3);
+}
+
+.signup-box button:hover{
+transform:translateY(-4px);
+box-shadow:0 0 35px rgba(139,92,246,0.6);
+}
+
+/* BOTTOM TEXT */
+.bottom-text{
+margin-top:20px;
+font-size:14px;
+color:#94a3b8;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="signup-box">
+
+<h1>Join <span>LNS AI</span></h1>
+<p>Create your account and start your AI journey 🚀</p>
+
+<!-- SIGNUP FORM -->
+<form id="signupForm">
+
+<input type="text" id="name" placeholder="Name" required>
+<input type="email" id="email" placeholder="Email" required>
+<input type="password" id="password" placeholder="Password" required>
+
+<button type="submit">Create Account</button>
+
+</form>
+
+<div class="bottom-text">
+Free Trial Available
+</div>
+
+</div>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(e){
+e.preventDefault(); // stop auto redirect
+
+let name = document.getElementById("name").value.trim();
+let email = document.getElementById("email").value.trim();
+let password = document.getElementById("password").value.trim();
+
+if(name === "" || email === "" || password === ""){
+alert("Please fill all fields");
+return;
+}
+
+if(password.length < 6){
+alert("Password must be at least 6 characters");
+return;
+}
+
+localStorage.setItem("loggedInUser", email);
+
+alert("Account created successfully!");
+window.location.href = "dashboard.html";
+
+</script>
+
+</body>
+</html>
